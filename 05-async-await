@@ -1,0 +1,43 @@
+let stocks = {
+  Fruits: ['strawberry', 'grapes', 'banana', 'apple'],
+  liquid: ['milk', 'ice'],
+  holder: ['cone', 'cup', 'stick'],
+  toppings: ['chocolate', 'peanut'],
+};
+
+let isShopOpen = false;
+
+function time(ms) {
+  return new Promise((resolve, reject) => {
+    if (isShopOpen) {
+      setTimeout(resolve, ms);
+    } else {
+      reject(console.log('shop is closed'));
+    }
+  });
+}
+
+async function kitchen() {
+  try {
+    await time(2000);
+    console.log(`${stocks.Fruits[3]} flavour ice cream`);
+    await time(1000);
+    console.log('machine started for production');
+    await time(2000);
+    console.log(`${stocks.Fruits[3]} has been chopped`);
+    await time(1000);
+    console.log(`${stocks.liquid[0]} and ${stocks.liquid[1]} have been added`);
+    await time(2000);
+    console.log(`ice cream put on ${stocks.holder[2]}`);
+    await time(3000);
+    console.log(`${stocks.toppings[0]} has been added`);
+    await time(1000);
+    console.log('ice cream served');
+  } catch (error) {
+    console.log('customer left', error);
+  } finally {
+    console.log('day ended. shop closed.');
+  }
+}
+
+kitchen();
