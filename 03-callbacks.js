@@ -6,6 +6,8 @@ let stocks = {
 };
 
 const order = (fruit_name, call_production) => {
+  // setTimeout receives a callback function to execute after 2 seconds
+  // This is an async callback - it's not called immediately, but when the timer completes
   setTimeout(() => {
     console.log(`${stocks.Fruits[fruit_name]} was selected`);
     call_production();
